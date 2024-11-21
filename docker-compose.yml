@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  dvwa:
+    image: vulnerables/web-dvwa
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - DVWA_DB_USER=dvwa
+      - DVWA_DB_PASSWORD=dvwa
+      - DVWA_DB_NAME=dvwa
+      - DVWA_DB_SERVER=db
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dvwa
+      MYSQL_USER: dvwa
+      MYSQL_PASSWORD: dvwa
+    ports:
+      - "3307:3306"
